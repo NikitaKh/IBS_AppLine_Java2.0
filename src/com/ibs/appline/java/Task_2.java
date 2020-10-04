@@ -16,23 +16,23 @@ class Operations {
      * @param var2 second var
      */
     public void sum(float var1, float var2){
-        System.out.printf("Sum is: %.4f\n", var1 + var2);
+        System.out.printf("Sum is: %.4f\n\n", var1 + var2);
     }
 
     public void subtraction(float var1, float var2){
-        System.out.printf("Subtract is: %.4f\n", var1 - var2);
+        System.out.printf("Subtract is: %.4f\n\n", var1 - var2);
     }
 
     public void division(float var1, float var2){
         if (var2 == 0){
             System.out.println("Division by zero is not allowed!" + "\n");
         } else {
-            System.out.printf("Division is: %.4f\n", var1 / var2);
+            System.out.printf("Division is: %.4f\n\n", var1 / var2);
         }
     }
 
     public void multiplication(float var1, float var2){
-        System.out.printf("Multiplication is: %.4f\n", var1 * var2);
+        System.out.printf("Multiplication is: %.4f\n\n", var1 * var2);
     }
 }
 
@@ -40,6 +40,7 @@ class Operations {
  * This class implements menu
  *
  * @author Nikita Khvalin
+ * @see Operations
  */
 class Menu {
 
