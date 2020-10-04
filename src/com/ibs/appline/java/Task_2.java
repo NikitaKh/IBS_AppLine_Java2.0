@@ -4,8 +4,17 @@ package com.ibs.appline.java;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
+/**
+ * This class implements arithmetical operations
+ */
 class Operations {
 
+    /**
+     * Sum
+     * @param var1 first var
+     * @param var2 second var
+     */
     public void sum(float var1, float var2){
         System.out.printf("Sum is: %.4f\n", var1 + var2);
     }
@@ -27,6 +36,11 @@ class Operations {
     }
 }
 
+/**
+ * This class implements menu
+ *
+ * @author Nikita Khvalin
+ */
 class Menu {
 
     Scanner sc = new Scanner(System.in);
@@ -38,6 +52,9 @@ class Menu {
         mainMenue();
     }
 
+    /**
+     * Menu implementation
+     */
     public void mainMenue (){
         Operations op = new Operations();
         System.out.print("Possible operations: \n 1. Sum\n 2. Subtraction\n 3. Division\n 4. Multiplication\n 0. Exit\n");
@@ -81,6 +98,9 @@ class Menu {
         }
     }
 
+    /**
+     * Variables scanning method
+     */
     private void varScanner(){
         try {
             System.out.println("Enter the first number: ");
@@ -93,6 +113,11 @@ class Menu {
     }
 }
 
+/**
+ * Main class
+ *
+ * @author Nikita Khvalin
+ */
 public class Task_2 {
     public static void main(String[] args){
         while (true){
