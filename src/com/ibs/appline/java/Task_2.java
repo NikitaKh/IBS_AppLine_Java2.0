@@ -7,26 +7,25 @@ import java.util.Scanner;
 class Operations {
 
     public void sum(float var1, float var2){
-        System.out.println("Sum is: " + (var1 + var2) + "\n");
+        System.out.printf("Sum is: %.4f\n", var1 + var2);
     }
 
     public void subtraction(float var1, float var2){
-        System.out.println("Subtract is: " + (var1 - var2) + "\n");
+        System.out.printf("Subtract is: %.4f\n", var1 - var2);
     }
 
     public void division(float var1, float var2){
         if (var2 == 0){
             System.out.println("Division by zero is not allowed!" + "\n");
         } else {
-            System.out.println("Division is: " + (var1 / var2) + "\n");
+            System.out.printf("Division is: %.4f\n", var1 / var2);
         }
     }
 
     public void multiplication(float var1, float var2){
-        System.out.println("Multiplication is: " + (var1 * var2) + "\n");
+        System.out.printf("Multiplication is: %.4f\n", var1 * var2);
     }
 }
-
 
 class Menu {
 
