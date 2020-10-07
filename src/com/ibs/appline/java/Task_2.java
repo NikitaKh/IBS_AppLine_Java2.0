@@ -36,6 +36,48 @@ class Operations {
     }
 }
 
+class ArrayLen {
+
+    private int arrayLen;
+
+    public ArrayLen(int arrayLen){
+        this.arrayLen = arrayLen;
+        arraysScanner();
+    }
+
+    /**
+     * This method scanning input and writing it to string array
+     */
+    private void arraysScanner(){
+        Scanner sc = new Scanner(System.in);
+        String[] stringArray = new String[arrayLen];
+        for(int i = 0; i < arrayLen; i++){
+            System.out.printf("Input %d word: ", (i + 1));
+            stringArray[i] = sc.nextLine();
+            System.out.println();
+        }
+        arrayParser(stringArray);
+    }
+
+    /**
+     * Method for finding the largest array
+     *
+     * @param array array of strings
+     */
+
+    private void arrayParser(String[] array){
+        int tmp = 0;
+        int word = 0;
+        for (int i = 0; i < array.length; i++){
+            if(array[i].length() > tmp){
+                tmp = array[i].length();
+                word = i;
+            }
+        }
+        System.out.println("The longest word is >> " + array[word] + "\n");
+    }
+}
+
 /**
  * This class implements menu
  *
@@ -48,15 +90,35 @@ class Menu {
     private float var1;
     private float var2;
 
-    public Menu(){
-        System.out.print("This program implements operations with numbers!\n");
-        mainMenue();
+    /**
+     * Main menu
+     */
+    public void menu(){
+        System.out.print("Possible programs: \n 1. Calculator\n 2. String array counter\n 0. Exit\n");
+        try {
+            System.out.print("Your choice >> ");
+            switch (sc.nextInt()){
+                case 1:
+                    System.out.print("This program implements operations with numbers!\n");
+                    calculator();
+                    break;
+                case 2:
+                    System.out.println("This program find's the longest string in the string array!");
+                    stringArray();
+                    break;
+                case 0:
+                    System.exit(0);
+            }
+        } catch (InputMismatchException e){
+            System.out.println("          ***** ERROR *****\n" +
+                    "You have to write ordinal number of program!\n");
+        }
     }
 
     /**
      * Menu implementation
      */
-    public void mainMenue (){
+    private void calculator() {
         Operations op = new Operations();
         System.out.print("Possible operations: \n 1. Sum\n 2. Subtraction\n 3. Division\n 4. Multiplication\n 0. Exit\n");
         System.out.print("Write ordinal number of operation: ");
@@ -68,34 +130,46 @@ class Menu {
                 case 1:
                     varScanner();
                     op.sum(var1, var2);
-                    mainMenue();
+                    menu();
                     break;
                 case 2:
                     varScanner();
                     op.subtraction(var1, var2);
-                    mainMenue();
+                    menu();
                     break;
                 case 3:
                     varScanner();
                     op.division(var1, var2);
-                    mainMenue();
+                    menu();
                     break;
                 case 4:
                     varScanner();
                     op.multiplication(var1, var2);
-                    mainMenue();
+                    menu();
                     break;
                 case 0:
                     System.exit(0);
                 default:
                     System.out.println("          ***** ERROR *****\n" +
                             "You have to write ordinal number of operation!\n");
-                    mainMenue();
+                    menu();
                     break;
             }
         } catch (InputMismatchException e){
             System.out.println("          ***** ERROR *****\n" +
                     "You have to write ordinal number of operation!\n");
+        }
+    }
+
+    /**
+     * Sub method to call array parser
+     */
+    private void stringArray(){
+        System.out.print("Set the length of array: ");
+        try {
+            ArrayLen arrayLenCounter = new ArrayLen(sc.nextInt());
+        } catch (InputMismatchException e){
+            System.out.println("You should use ints!");
         }
     }
 
@@ -122,7 +196,8 @@ class Menu {
 public class Task_2 {
     public static void main(String[] args){
         while (true){
-            Menu menue = new Menu();
+            Menu main = new Menu();
+            main.menu();
         }
     }
 }
