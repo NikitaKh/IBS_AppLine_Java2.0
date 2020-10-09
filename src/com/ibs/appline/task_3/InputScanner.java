@@ -1,4 +1,4 @@
-package com.ibs.appline.task_2;
+package com.ibs.appline.task_3;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -69,5 +69,14 @@ class InputScanner {
             System.out.println("*** Нужно вводить числа! ***\n");
             exception = true;
         }
+    }
+
+    public String[] stringsScanner(int arrayLen){
+        String[] stringArray = new String[arrayLen];
+        for (int i = 0; i < arrayLen; i++){
+            System.out.printf("Введите %d слово >> ", (i+1));
+            stringArray[i] = sc.nextLine();
+        }
+        return stringArray;
     }
 }

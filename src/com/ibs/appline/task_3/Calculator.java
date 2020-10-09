@@ -1,4 +1,4 @@
-package com.ibs.appline.task_2;
+package com.ibs.appline.task_3;
 
 class Calculator implements Operations {
 

@@ -3,17 +3,19 @@ package com.ibs.appline.task_2;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Menu {
+class Menu {
 
     private double ans;
 
+    Scanner sc = new Scanner(System.in);
+
     public void calculatorMenu(){
         try {
-            Scanner sc = new Scanner(System.in);
             InputScanner input = new InputScanner();
             Calculator calc = new Calculator();
             System.out.println("*** КАЛЬКУЛЯТОР ***");
-            System.out.print("Выберите операцию:\n 1.Сложение\n 2.Вычитание\n 3.Умножение\n 4.Деление\n >>> ");
+            System.out.print("Выберите операцию:\n 1.Сложение\n 2.Вычитание\n " +
+                    "3.Умножение\n 4.Деление\n >>> ");
             switch (sc.nextInt()) {
                 case 1 -> {
                     input.sumScanner();
@@ -44,6 +46,7 @@ public class Menu {
             }
 
             System.out.printf("Ответ: %.4f\n\n", ans);
+            calculatorMenu();
         } catch (InputMismatchException e){
             System.out.println("            ***** ОШИБКА *****\n" +
                     "Необходимо ввести порядковый номер операции!\n");
