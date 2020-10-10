@@ -16,7 +16,10 @@ public class Menu {
             case 1 -> {
                 ArrayGenerator make = new ArrayGenerator();
             }
-            case 2 -> giftMenu();
+            case 2 -> {
+                Gift present = new Gift();
+                present.showGifts();
+            }
             case 3 -> System.exit(0);
             default -> System.out.println("            ***** ОШИБКА *****\n" +
                     "Необходимо ввести порядковый номер программы!\n");

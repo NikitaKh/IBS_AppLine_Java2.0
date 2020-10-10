@@ -2,6 +2,7 @@ package com.ibs.appline.task_4;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class ArrayGenerator {
 
@@ -45,6 +46,11 @@ public class ArrayGenerator {
 
     private void swap (int minPos, int maxPos) {
         System.out.println("Меняем местами минимальный и максимальный элементы >>> ");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         int c = intArray[minPos];
         intArray[minPos] = intArray[maxPos];
         intArray[maxPos] = c;
