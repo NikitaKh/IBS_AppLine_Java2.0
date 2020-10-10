@@ -9,25 +9,31 @@ class Menu {
 
     Scanner sc = new Scanner(System.in);
 
-    public void mainMenu(){
+    /**
+     * Главное меню
+     */
+    public void mainMenu() {
         try {
             System.out.print("Выберите программу:\n 1.Калькулятор\n " +
                     "2.Поиск максимального элемента в массиве\n " +
                     "3.Выход\n >>> ");
-            switch (sc.nextInt()){
+            switch (sc.nextInt()) {
                 case 1 -> calculatorMenu();
                 case 2 -> arrayMenu();
                 case 3 -> System.exit(0);
                 default -> System.out.println("            ***** ОШИБКА *****\n" +
                         "Необходимо ввести порядковый номер программы!\n");
             }
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("            ***** ОШИБКА *****\n" +
                     "Необходимо ввести порядковый номер программы!\n");
         }
     }
 
-    private void calculatorMenu(){
+    /**
+     * Меню калькулятора
+     */
+    private void calculatorMenu() {
         try {
             InputScanner input = new InputScanner();
             Calculator calc = new Calculator();
@@ -59,20 +65,23 @@ class Menu {
             if (input.getException())
                 return;
 
-            if (calc.getZero()){
+            if (calc.getZero()) {
                 System.out.println("Делить на 0 нельзя!\n");
                 return;
             }
 
             System.out.printf("Ответ: %.4f\n\n", ans);
             calculatorMenu();
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("            ***** ОШИБКА *****\n" +
                     "Необходимо ввести порядковый номер операции!\n");
         }
     }
 
-    private void arrayMenu(){
+    /**
+     * Меню программы парсера
+     */
+    private void arrayMenu() {
         boolean exception = true;
         try {
             System.out.println("*** Поиск максимального элемента в массиве ***");
@@ -88,8 +97,8 @@ class Menu {
                         "Необходимо ввести порядковый номер операции!\n\n");
             }
             arrayMenu();
-        } catch (InputMismatchException e){
-            if(exception){
+        } catch (InputMismatchException e) {
+            if (exception) {
                 System.out.println("            ***** ОШИБКА *****\n" +
                         "Необходимо ввести порядковый номер операции!\n");
             } else {

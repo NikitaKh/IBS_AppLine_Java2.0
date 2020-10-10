@@ -1,26 +1,30 @@
 package com.ibs.appline.task_4;
 
+/**
+ * @see Sweets
+ */
 public class Chocolate extends Sweets {
 
-    private int cocao;
+    private int cacao;
 
-    public Chocolate(){}
+    public Chocolate() {
+    }
 
-    public Chocolate(String name, double weight, double price, int cocao) {
+    public Chocolate(String name, double weight, double price, int cacao) {
         super(name, weight, price);
-        this.cocao = cocao;
+        this.cacao = cacao;
     }
 
     public int getCocao() {
-        return cocao;
+        return cacao;
     }
 
     public void setCocao(int cocao) {
-        this.cocao = cocao;
+        this.cacao = cocao;
     }
 
     @Override
     public String toString() {
-        return "Шоколад [" + super.toString() + ", % кокао: " + cocao + "]";
+        return "Шоколад [" + super.toString() + ", % какао: " + cacao + "]";
     }
 }

@@ -1,10 +1,16 @@
 package com.ibs.appline.task_4;
 
+/**
+ * Класс конфет))))
+ *
+ * @see Sweets
+ */
 public class Candy extends Sweets {
 
     private String filling;
 
-    public Candy(){}
+    public Candy() {
+    }
 
     public Candy(String name, double weight, double price, String filling) {
         super(name, weight, price);

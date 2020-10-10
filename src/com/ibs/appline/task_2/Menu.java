@@ -3,13 +3,17 @@ package com.ibs.appline.task_2;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
+/**
+ * Класс реализовывает работу меню программы
+ */
 class Menu {
 
     private double ans;
 
     Scanner sc = new Scanner(System.in);
 
-    public void calculatorMenu(){
+    public void calculatorMenu() {
         try {
             InputScanner input = new InputScanner();
             Calculator calc = new Calculator();
@@ -40,14 +44,14 @@ class Menu {
             if (input.getException())
                 return;
 
-            if (calc.getZero()){
+            if (calc.getZero()) {
                 System.out.println("Делить на 0 нельзя!\n");
                 return;
             }
 
             System.out.printf("Ответ: %.4f\n\n", ans);
             calculatorMenu();
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("            ***** ОШИБКА *****\n" +
                     "Необходимо ввести порядковый номер операции!\n");
         }

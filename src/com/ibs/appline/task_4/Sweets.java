@@ -1,13 +1,17 @@
 package com.ibs.appline.task_4;
 
+/**
+ * Абстрактный класс сладостей)
+ */
 public abstract class Sweets {
     private String name;
     private double weight;
     private double price;
 
-    public Sweets(){}
+    public Sweets() {
+    }
 
-    public Sweets(String name, double weight, double price){
+    public Sweets(String name, double weight, double price) {
         this.name = name;
         this.weight = weight;
         this.price = price;
@@ -38,7 +42,7 @@ public abstract class Sweets {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return ("наименование: " + name + ", вес: " + weight + "гр., цена: " + price + "руб.");
     }
 }

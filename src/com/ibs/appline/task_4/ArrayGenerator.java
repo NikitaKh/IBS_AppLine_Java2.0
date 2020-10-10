@@ -2,23 +2,29 @@ package com.ibs.appline.task_4;
 
 import java.util.Arrays;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
+/**
+ * Класс реализует работу программы поиска максимального и минимального эл-та в массиве
+ */
 public class ArrayGenerator {
 
     private int[] intArray = new int[20];
     private int minPos;
     private int maxPos;
 
-    public ArrayGenerator(){
+    public ArrayGenerator() {
         intsGen();
         positionFinder();
         swap(minPos, maxPos);
     }
 
-    public void intsGen(){
+    /**
+     * Метод генерит случайные цифры в массиве размерностью 20
+     * числа от -10 до 10
+     */
+    public void intsGen() {
         Random rn = new Random();
-        for (int i = 0; i < intArray.length; i++){
+        for (int i = 0; i < intArray.length; i++) {
             intArray[i] = rn.nextInt((10 - (-10)) + 1) + (-10);
         }
         System.out.print("Создан массив\n" +
@@ -26,15 +32,18 @@ public class ArrayGenerator {
         System.out.println(Arrays.toString(intArray));
     }
 
-    public void positionFinder(){
+    /**
+     * Метод осуществляет поиск позиции меньшего и большего числа в массиве
+     */
+    public void positionFinder() {
         int numMin = 0;
         int numMax = 0;
-        for (int i = 0; i < intArray.length; i++){
-            if(numMin < intArray[i]){
+        for (int i = 0; i < intArray.length; i++) {
+            if (numMin < intArray[i]) {
                 numMin = intArray[i];
                 minPos = i;
             }
-            if (numMax > intArray[i]){
+            if (numMax > intArray[i]) {
                 numMax = intArray[i];
                 maxPos = i;
             }
@@ -44,7 +53,13 @@ public class ArrayGenerator {
         System.out.println();
     }
 
-    private void swap (int minPos, int maxPos) {
+    /**
+     * Метод меняет местами в массиве меньшее и большее число
+     *
+     * @param minPos позиции меньшего числа
+     * @param maxPos позиция большего числа
+     */
+    private void swap(int minPos, int maxPos) {
         System.out.println("Меняем местами минимальный и максимальный элементы >>> ");
         try {
             Thread.sleep(1000);
