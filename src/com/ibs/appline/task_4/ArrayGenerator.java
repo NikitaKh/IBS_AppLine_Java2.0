@@ -39,13 +39,13 @@ public class ArrayGenerator {
         int maxNegative = -10;
         int minPositive = 10;
 
-        for(int i = 0; i < intArray.length; i++){
-            if(intArray[i] < minPositive && intArray[i] > 0){
+        for (int i = 0; i < intArray.length; i++) {
+            if (intArray[i] < minPositive && intArray[i] > 0) {
                 minPositive = intArray[i];
                 minPos = i;
             }
 
-            if (intArray[i] > maxNegative && intArray[i] < 0){
+            if (intArray[i] > maxNegative && intArray[i] < 0) {
                 maxNegative = intArray[i];
                 maxPos = i;
             }
@@ -54,7 +54,6 @@ public class ArrayGenerator {
         System.out.printf("Максимальный отрицательный элемент %d, %d-й по счету!\n", maxNegative, (maxPos + 1));
         System.out.printf("Минимальный положительный элемент %d, %d-й по счету!\n", minPositive, (minPos + 1));
         System.out.println();
-        System.out.println(-10 < -1);
     }
 
     /**
@@ -76,8 +75,8 @@ public class ArrayGenerator {
         System.out.print("Создан новый массив\n" +
                 " >>> ");
         System.out.println(Arrays.toString(intArray));
-        System.out.printf("Максимальный отрицательный элемент %d, %d-й по счету!\n", intArray[maxPos], (maxPos + 1));
-        System.out.printf("Минимальный положительный элемент %d, %d-й по счету!\n", intArray[minPos], (minPos + 1));
+        System.out.printf("Максимальный отрицательный элемент %d, %d-й по счету!\n", intArray[minPos], (minPos + 1));
+        System.out.printf("Минимальный положительный элемент %d, %d-й по счету!\n", intArray[maxPos], (maxPos + 1));
         System.out.println();
     }
 }
