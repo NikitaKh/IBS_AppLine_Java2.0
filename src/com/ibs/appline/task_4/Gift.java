@@ -26,9 +26,9 @@ public class Gift {
     /**
      * Метод сканирует кол-во конфет
      */
-    private void candyScanner() {
+    private void candyScanner(String name) {
         try {
-            System.out.print("Сколько упаковок конфет вы хотите использовать?\n");
+            System.out.print("Сколько упаковок конфет " + name + " вы хотите использовать?\n");
             candyEmount = sc.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("Необходимо вводить ко-во в виде цифр!");
@@ -39,9 +39,9 @@ public class Gift {
     /**
      * Метод сканирует кол-во шоколада
      */
-    private void chocolateScanner() {
+    private void chocolateScanner(String name) {
         try {
-            System.out.print("Сколько плиток шоколада вы хотите использовать?\n");
+            System.out.print("Сколько плиток шоколада " + name + " вы хотите использовать?\n");
             chocolateEmount = sc.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("Необходимо вводить ко-во в виде цифр!");
@@ -52,9 +52,9 @@ public class Gift {
     /**
      * Метод сканирует кол-во мармеладок
      */
-    private void jellyScanner() {
+    private void jellyScanner(String name) {
         try {
-            System.out.print("Сколько мармеладных драже вы хотите использовать?\n");
+            System.out.print("Сколько мармеладных драже " + name + " вы хотите использовать?\n");
             jellyEmount = sc.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("Необходимо вводить ко-во в виде цифр!");
@@ -73,19 +73,19 @@ public class Gift {
         Sweets[] gift = {step, black, gummy};
 
         for (Sweets someSweet : gift) {
-            System.out.println(someSweet.toString());
+            System.out.println(someSweet.getName().toString());
         }
 
         try {
-            candyScanner();
+            candyScanner(step.getName());
             if (exception) {
                 return;
             }
-            chocolateScanner();
+            chocolateScanner(black.getName());
             if (exception) {
                 return;
             }
-            jellyScanner();
+            jellyScanner(gummy.getName());
             if (exception) {
                 return;
             }

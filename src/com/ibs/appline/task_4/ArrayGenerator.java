@@ -33,24 +33,28 @@ public class ArrayGenerator {
     }
 
     /**
-     * Метод осуществляет поиск позиции меньшего и большего числа в массиве
+     * Метод осуществляет поиск позиции меньшего положительного и большего отрицательного числа в массиве
      */
     public void positionFinder() {
-        int numMin = 0;
-        int numMax = 0;
-        for (int i = 0; i < intArray.length; i++) {
-            if (numMin < intArray[i]) {
-                numMin = intArray[i];
+        int maxNegative = -10;
+        int minPositive = 10;
+
+        for(int i = 0; i < intArray.length; i++){
+            if(intArray[i] < minPositive && intArray[i] > 0){
+                minPositive = intArray[i];
                 minPos = i;
             }
-            if (numMax > intArray[i]) {
-                numMax = intArray[i];
+
+            if (intArray[i] > maxNegative && intArray[i] < 0){
+                maxNegative = intArray[i];
                 maxPos = i;
             }
         }
-        System.out.printf("Минимальный элемент %d, %d-й по счету!\n", numMin, (minPos + 1));
-        System.out.printf("Максимальный элемент %d, %d-й по счету!\n", numMax, (maxPos + 1));
+
+        System.out.printf("Максимальный отрицательный элемент %d, %d-й по счету!\n", maxNegative, (maxPos + 1));
+        System.out.printf("Минимальный положительный элемент %d, %d-й по счету!\n", minPositive, (minPos + 1));
         System.out.println();
+        System.out.println(-10 < -1);
     }
 
     /**
@@ -72,8 +76,8 @@ public class ArrayGenerator {
         System.out.print("Создан новый массив\n" +
                 " >>> ");
         System.out.println(Arrays.toString(intArray));
-        System.out.printf("Минимальный элемент %d, %d-й по счету!\n", intArray[minPos], (minPos + 1));
-        System.out.printf("Максимальный элемент %d, %d-й по счету!\n", intArray[maxPos], (maxPos + 1));
+        System.out.printf("Максимальный отрицательный элемент %d, %d-й по счету!\n", intArray[maxPos], (maxPos + 1));
+        System.out.printf("Минимальный положительный элемент %d, %d-й по счету!\n", intArray[minPos], (minPos + 1));
         System.out.println();
     }
 }
