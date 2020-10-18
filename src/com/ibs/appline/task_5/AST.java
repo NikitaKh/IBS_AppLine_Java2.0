@@ -21,8 +21,8 @@ import java.util.regex.Pattern;
 public class AST {
     private Node root;
 
-    private static final Pattern PATTERN_DIGIT = Pattern.compile("^[0-9]\\d*");
-    private static final Pattern PATTERN_OPER = Pattern.compile("[\\+\\-\\/\\*][\\+\\-\\/\\*\\s]*");
+    private static final Pattern PATTERN_DIGIT = Pattern.compile("(?<!\\d)-?\\d*[.,]?\\d+");
+    private static final Pattern PATTERN_OPER = Pattern.compile("[+\\-/*][\\+\\/\\*\\s]*");
 
     public AST(Node root) {
         this.root = root;

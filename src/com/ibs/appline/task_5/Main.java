@@ -24,7 +24,7 @@ public class Main {
                             " >>> ");
                     AST ast = AST.create(new Scanner(System.in).nextLine());
                     var res = ast.calc();
-                    if(res == Infinity){
+                    if (res == Infinity) {
                         System.out.println("Делить на 0 нельзя!\n");
                         break;
                     }
