@@ -2,16 +2,15 @@ package com.ibs.appline.task_5;
 
 import java.util.Scanner;
 
-import static jdk.nashorn.internal.objects.Global.Infinity;
-
 /**
- * Реализация калькулятора с применением бинарного дерева.
+ * Реализация калькулятора с применением принципа преобразования из инфикса в постфикс (обратная польская нотация).
  * Необходимо в строку ввести выражение.
- * !!! На данный момент программа не поддерживает скобки !!!
+ * Пример: 2+3-1*(1+2), можно делать пробелы.
  *
  * @author Nikita Khvalin
  */
 public class Main {
+
     public static void main(String[] args) {
         while (true) {
             System.out.print("Меню:\n" +
@@ -22,22 +21,11 @@ public class Main {
                 case "1" -> {
                     System.out.print("Выведите арифметическое выражение в строку:\n" +
                             " >>> ");
-                    AST ast = AST.create(new Scanner(System.in).nextLine());
-                    var res = ast.calc();
-                    if (res == Infinity) {
-                        System.out.println("Делить на 0 нельзя!\n");
-                        break;
-                    }
-                    System.out.printf("Ответ = %.2f\n\n", res);
-                    break;
+                    String postfix = InfixToPostfix.convertToPostfix(new Scanner(System.in).nextLine());
+                    System.out.println("Ответ: " + Calculation.parsingPostfix(postfix));
                 }
-                case "0" -> {
-                    System.exit(0);
-                    break;
-                }
-                default -> {
-                    throw new IllegalArgumentException();
-                }
+                case "0" -> System.exit(0);
+                default -> throw new IllegalArgumentException();
             }
         }
     }
