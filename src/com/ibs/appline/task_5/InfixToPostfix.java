@@ -1,64 +1,97 @@
 package com.ibs.appline.task_5;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InfixToPostfix {
 
+
     /**
-     * Регулярное выражение для проверки введенных значений
+     * Регулярные выражения для проверки значений
+     * 1. Валидность поступающих значений;
+     * 2. Проверка на числа;
+     * 3. Проверка на знаки;
      */
-    private static final Pattern PATTERN_VALID = Pattern.compile("[\\+\\-\\*\\/\\(\\)\\d][\\+\\-\\*\\/\\(\\)\\d]*");
+    private static final Pattern PATTERN_VALID = Pattern.compile("[\\+\\-\\*\\/\\(\\)\\.\\d]");
+    private static final Pattern PATTERN_DIGIT = Pattern.compile("([0-9]*[.])?[0-9]+");
+    private static final Pattern PATTERN_OPERATIONS = Pattern.compile("[\\+\\-\\*\\/\\(\\)][\\+\\-\\*\\/\\(\\)]*");
+
+
+    /**
+     * В данном методе введеный пример парсится строки и записывается в листы
+     * это позволило избежать ошибок при работе с значениями с плавующей точкой
+     *
+     * @param input строковое уравнение введенное с терминала
+     * @return коллекция строк
+     */
+    public static List<String> infixListToArray(String input) {
+
+        List<String> infixList = new ArrayList<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            Matcher operMatch = PATTERN_OPERATIONS.matcher(Character.toString(input.charAt(i)));
+            if (operMatch.find()) {
+                infixList.add(Character.toString(input.charAt(i)));
+            } else {
+                StringBuilder tmp = new StringBuilder();
+                try {
+                    do {
+                        tmp.append(input.charAt(i));
+                        i++;
+                    } while (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.');
+                    infixList.add(tmp.toString());
+                    i--;
+                } catch (StringIndexOutOfBoundsException e) {
+                    infixList.add(tmp.toString());
+                    break;
+                }
+            }
+        }
+        return infixList;
+    }
+
 
     /**
      * Метод конвертации из инфикса в постфикс
      *
-     * @param infix введенный с терминала пользователем пример
+     * @param infixList введенный с терминала пользователем пример в виде листа
      * @return строка переведенная в постификс
      */
-    public static String convertToPostfix(String infix) {
 
-        StringBuilder postfix = new StringBuilder();
-        Stack<Character> operator = new Stack<>();
-        char popped;
+    public static List<String> convertToPostfix(List<String> infixList) {
 
-        for (int i = 0; i < infix.length(); i++) {
+        List<String> postfixList = new ArrayList<>();
+        Stack<String> operator = new Stack<>();
+        String popped;
 
-            char get = infix.charAt(i);
-
-            if (!isOperator(get)) {
-                Matcher digitMatch = PATTERN_VALID.matcher(Character.toString(get));
-                if (digitMatch.find()) {
-                    postfix.append(get);
+        for (String get : infixList) {
+            Matcher digitMatch = PATTERN_DIGIT.matcher(get);
+            if (digitMatch.find()) {
+                Matcher validMatcher = PATTERN_VALID.matcher(get);
+                if (validMatcher.find()) {
+                    postfixList.add(get);
                 } else
                     throw new IllegalArgumentException();
-            } else if (get == ')') {
-                while ((popped = operator.pop()) != '(') {
-                    postfix.append(popped);
+            } else if (get.equals(")")) {
+                while (!(popped = operator.pop()).equals("(")) {
+                    postfixList.add(popped);
                 }
             } else {
-                while (!operator.isEmpty() && get != '(' && weights(operator.peek()) >= weights(get)) {
-                    postfix.append(operator.pop());
+                while (!operator.isEmpty() && !get.equals("(") && weights(operator.peek()) >= weights(get)) {
+                    postfixList.add(operator.pop());
                 }
                 operator.push(get);
             }
         }
         while (!operator.isEmpty()) {
-            postfix.append(operator.pop());
+            postfixList.add(operator.pop());
         }
-        return postfix.toString();
+        return postfixList;
     }
 
-    /**
-     * Метод проверки число или оператор
-     *
-     * @param i строковой симвл
-     * @return если значение больше 0, то это оператор, если 0, то это числовое значение
-     */
-    private static boolean isOperator(char i) {
-        return weights(i) > 0;
-    }
 
     /**
      * Метод сортировки операторов по весу, чтобы распределять в правильном порядке в постфиксном выражении
@@ -66,14 +99,12 @@ public class InfixToPostfix {
      * @param i строковой симвл
      * @return возвращается вес оператора или 0, если это числовое значение
      */
-    private static int weights(char i) {
-        if (i == '(' || i == ')') {
-            return 1;
-        } else if (i == '-' || i == '+') {
-            return 2;
-        } else if (i == '*' || i == '/') {
-            return 3;
-        } else
-            return 0;
+    private static int weights(String i) {
+        return switch (i) {
+            case "(", ")" -> 1;
+            case "-", "+" -> 2;
+            case "*", "/" -> 3;
+            default -> 0;
+        };
     }
 }
