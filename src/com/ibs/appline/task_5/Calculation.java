@@ -53,8 +53,7 @@ public class Calculation {
                 break;
             case '/':
                 if (operandB == 0.0) {
-                    System.out.println("Ошибка: деление на ноль!");
-                    System.exit(0);
+                    throw new ArithmeticException("Деление на ноль");
                 } else {
                     result = operandA / operandB;
                 }

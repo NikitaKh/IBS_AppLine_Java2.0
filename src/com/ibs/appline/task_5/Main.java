@@ -21,7 +21,8 @@ public class Main {
                 case "1" -> {
                     System.out.print("Выведите арифметическое выражение в строку:\n" +
                             " >>> ");
-                    String postfix = InfixToPostfix.convertToPostfix(new Scanner(System.in).nextLine());
+                    String input = new Scanner(System.in).nextLine();
+                    String postfix = InfixToPostfix.convertToPostfix(input.replaceAll(" ", ""));
                     System.out.println("Ответ: " + Calculation.parsingPostfix(postfix));
                 }
                 case "0" -> System.exit(0);
