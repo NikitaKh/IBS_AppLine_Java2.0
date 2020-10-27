@@ -47,7 +47,6 @@ public class InfixToPostfix {
         while (!operator.isEmpty()) {
             postfix.append(operator.pop());
         }
-        System.out.println(postfix);
         return postfix.toString();
     }
 
