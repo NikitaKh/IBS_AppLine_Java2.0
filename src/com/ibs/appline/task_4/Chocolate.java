@@ -7,20 +7,9 @@ public class Chocolate extends Sweets {
 
     private int cacao;
 
-    public Chocolate() {
-    }
-
     public Chocolate(String name, double weight, double price, int cacao) {
         super(name, weight, price);
         this.cacao = cacao;
-    }
-
-    public int getCocao() {
-        return cacao;
-    }
-
-    public void setCocao(int cocao) {
-        this.cacao = cocao;
     }
 
     @Override

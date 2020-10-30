@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 
 public class InfixToPostfix {
 
-
     /**
      * Регулярные выражения для проверки значений
      * 1. Валидность поступающих значений;

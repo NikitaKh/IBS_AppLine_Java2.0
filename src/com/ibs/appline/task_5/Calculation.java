@@ -32,10 +32,16 @@ public class Calculation {
                     calc.set(0, (calc.lastElement() * -1));
                     continue;
                 }
-                double opB = calc.remove(calc.size() - 1);
-                double opA = calc.remove(calc.size() - 1);
-                double tempCalc = makeCalculation(postfixList.get(i), opA, opB);
-                calc.add(tempCalc);
+
+                try {
+                    double opB = calc.remove(calc.size() - 1);
+                    double opA = calc.remove(calc.size() - 1);
+                    double tempCalc = makeCalculation(postfixList.get(i), opA, opB);
+                    calc.add(tempCalc);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    throw new ArrayIndexOutOfBoundsException("НАДО ДОРАБОТАТЬ --");
+                }
+
             }
         }
         return calc.remove(calc.size() - 1);

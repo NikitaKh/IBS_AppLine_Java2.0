@@ -23,6 +23,7 @@ public class Gift {
         return exception;
     }
 
+
     /**
      * Метод сканирует кол-во конфет
      */
@@ -35,6 +36,7 @@ public class Gift {
             exception = true;
         }
     }
+
 
     /**
      * Метод сканирует кол-во шоколада
@@ -49,6 +51,7 @@ public class Gift {
         }
     }
 
+
     /**
      * Метод сканирует кол-во мармеладок
      */
@@ -62,6 +65,7 @@ public class Gift {
         }
     }
 
+
     /**
      * Метод выводит информацию по подарку
      */
@@ -73,7 +77,7 @@ public class Gift {
         Sweets[] gift = {step, black, gummy};
 
         for (Sweets someSweet : gift) {
-            System.out.println(someSweet.getName().toString());
+            System.out.println(someSweet.getName());
         }
 
         try {

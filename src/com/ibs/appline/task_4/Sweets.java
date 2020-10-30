@@ -8,9 +8,6 @@ public abstract class Sweets {
     private double weight;
     private double price;
 
-    public Sweets() {
-    }
-
     public Sweets(String name, double weight, double price) {
         this.name = name;
         this.weight = weight;

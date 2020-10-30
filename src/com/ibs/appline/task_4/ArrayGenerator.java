@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class ArrayGenerator {
 
-    private int[] intArray = new int[20];
+    private final int[] intArray = new int[20];
     private int minPos;
     private int maxPos;
 
@@ -17,6 +17,7 @@ public class ArrayGenerator {
         positionFinder();
         swap(minPos, maxPos);
     }
+
 
     /**
      * Метод генерит случайные цифры в массиве размерностью 20
@@ -31,6 +32,7 @@ public class ArrayGenerator {
                 " >>> ");
         System.out.println(Arrays.toString(intArray));
     }
+
 
     /**
      * Метод осуществляет поиск позиции меньшего положительного и большего отрицательного числа в массиве
@@ -55,6 +57,7 @@ public class ArrayGenerator {
         System.out.printf("Минимальный положительный элемент %d, %d-й по счету!\n", minPositive, (minPos + 1));
         System.out.println();
     }
+
 
     /**
      * Метод меняет местами в массиве меньшее и большее число
