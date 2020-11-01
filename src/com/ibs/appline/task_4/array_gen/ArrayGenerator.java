@@ -1,4 +1,4 @@
-package com.ibs.appline.task_4;
+package com.ibs.appline.task_4.array_gen;
 
 import java.util.Arrays;
 import java.util.Random;

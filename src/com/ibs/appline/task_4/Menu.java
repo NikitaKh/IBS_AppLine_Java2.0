@@ -1,5 +1,11 @@
 package com.ibs.appline.task_4;
 
+import com.ibs.appline.task_4.array_gen.ArrayGenerator;
+import com.ibs.appline.task_4.gift_box.Candy;
+import com.ibs.appline.task_4.gift_box.Chocolate;
+import com.ibs.appline.task_4.gift_box.Gift;
+import com.ibs.appline.task_4.gift_box.JellyBean;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,11 +24,13 @@ public class Menu {
                 ArrayGenerator make = new ArrayGenerator();
             }
             case 2 -> {
-                System.out.println("\n *** Давайте соберем подарок! *** ");
                 Gift present = new Gift();
-                if (present.isException()) {
-                    return;
-                }
+                present.addItem(new Candy("Стэп", 150, 298.20, "орехи и карамель"));
+                present.addItem(new Chocolate("Бабаевский", 100, 55, 60));
+                present.addItem(new JellyBean("Haribo", 75, 135, "вишня + земляника"));
+                present.printItems();
+                System.out.println("Общий вес подарка: " + present.getTotalWeight());
+                System.out.println("Общая цена подарка: " + present.getTotalPrice());
             }
             case 3 -> System.exit(0);
             default -> System.out.println("            ***** ОШИБКА *****\n" +

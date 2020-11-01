@@ -1,11 +1,16 @@
-package com.ibs.appline.task_4;
+package com.ibs.appline.task_4.gift_box;
 
 /**
  * @see Sweets
  */
 public class Chocolate extends Sweets {
 
-    private int cacao;
+    private final int cacao;
+
+    public Chocolate(String name, int cacao) {
+        super(name);
+        this.cacao = cacao;
+    }
 
     public Chocolate(String name, double weight, double price, int cacao) {
         super(name, weight, price);
@@ -13,7 +18,7 @@ public class Chocolate extends Sweets {
     }
 
     @Override
-    public String toString() {
+    public String description() {
         return "Шоколад [" + super.toString() + ", % какао: " + cacao + "]";
     }
 }

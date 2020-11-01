@@ -1,11 +1,16 @@
-package com.ibs.appline.task_4;
+package com.ibs.appline.task_4.gift_box;
 
 /**
  * @see Sweets
  */
 public class JellyBean extends Sweets {
 
-    private String taste;
+    private final String taste;
+
+    public JellyBean(String name, String taste) {
+        super(name);
+        this.taste = taste;
+    }
 
     public JellyBean(String name, double weight, double price, String taste) {
         super(name, weight, price);
@@ -13,7 +18,7 @@ public class JellyBean extends Sweets {
     }
 
     @Override
-    public String toString() {
+    public String description() {
         return "Мармеладное драже [" + super.toString() + ", вкус: " + taste + "]";
     }
 }
