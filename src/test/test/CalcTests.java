@@ -32,5 +32,4 @@ public class CalcTests {
         Assert.assertEquals("Ожидаемый результат 13.0", 13.0,
                 Calculation.parsingPostfix(listForTest), 0);
     }
-
 }
