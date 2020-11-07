@@ -38,8 +38,8 @@ public class CalcTests {
         String[] input = {"1", "20", "5", "2", "*", "/", "+", "10", "+"};
         List<String> listForTest = new LinkedList<>();
         Collections.addAll(listForTest, input);
-        Assert.assertSame("Ожидаемый результат 13.0", 13.0,
-                Calculation.parsingPostfix(listForTest));
+        Assert.assertSame("Ожидаемый результат 13.0", (int) 13.0,
+                (int) Calculation.parsingPostfix(listForTest));
     }
 
     @Test (expected = ArithmeticException.class)
