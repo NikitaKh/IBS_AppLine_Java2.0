@@ -24,9 +24,9 @@ public class Main {
                 case "1" -> {
                     System.out.print("Выведите арифметическое выражение в строку:\n" +
                             " >>> ");
-                    String input = new Scanner(System.in).nextLine();
+                    String input = new Scanner(System.in).nextLine().replace(" ", "");
                     List<String> postfixList = InfixToPostfix.convertToPostfix(
-                            InfixToPostfix.infixListToArray(input.replaceAll(" ", "")));
+                            InfixToPostfix.infixListToArray(input));
                     System.out.printf("Ответ: %.2f\n", Calculation.parsingPostfix(postfixList));
                 }
                 case "0" -> System.exit(0);

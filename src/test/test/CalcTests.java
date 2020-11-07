@@ -32,4 +32,25 @@ public class CalcTests {
         Assert.assertEquals("Ожидаемый результат 13.0", 13.0,
                 Calculation.parsingPostfix(listForTest), 0);
     }
+
+    @Test
+    public void calculationTestSame() {
+        String[] input = {"1", "20", "5", "2", "*", "/", "+", "10", "+"};
+        List<String> listForTest = new LinkedList<>();
+        Collections.addAll(listForTest, input);
+        Assert.assertSame("Ожидаемый результат 13.0", 13.0,
+                Calculation.parsingPostfix(listForTest));
+    }
+
+    @Test (expected = ArithmeticException.class)
+    public void divisionByZeroTest(){
+        Calculation.parsingPostfix(InfixToPostfix.convertToPostfix(
+                InfixToPostfix.infixListToArray("22+3/0")));
+    }
+
+    @Test (expected = NumberFormatException.class)
+    public void invalidValueTest(){
+        Calculation.parsingPostfix(InfixToPostfix.convertToPostfix(
+                InfixToPostfix.infixListToArray("2+a2-(2a-2)")));
+    }
 }

@@ -1,6 +1,7 @@
 package com.ibs.appline.task_5;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
 import java.util.regex.Matcher;
@@ -35,23 +36,22 @@ public class InfixToPostfix {
             if (operMatch.find()) {
                 infixList.add(Character.toString(input.charAt(i)));
             } else {
-                StringBuilder tmp = new StringBuilder();
+                StringBuilder digits = new StringBuilder();
                 try {
                     do {
-                        tmp.append(input.charAt(i));
+                        digits.append(input.charAt(i));
                         i++;
                     } while (Character.isDigit(input.charAt(i)) || input.charAt(i) == '.');
-                    infixList.add(tmp.toString());
+                    infixList.add(digits.toString());
                     i--;
                 } catch (StringIndexOutOfBoundsException e) {
-                    infixList.add(tmp.toString());
+                    infixList.add(digits.toString());
                     break;
                 }
             }
         }
         return infixList;
     }
-
 
     /**
      * Метод конвертации из инфикса в постфикс
@@ -75,8 +75,12 @@ public class InfixToPostfix {
                 } else
                     throw new IllegalArgumentException();
             } else if (get.equals(")")) {
-                while (!(popped = operator.pop()).equals("(")) {
-                    postfixList.add(popped);
+                try {
+                    while (!(popped = operator.pop()).equals("(")) {
+                        postfixList.add(popped);
+                    }
+                } catch (EmptyStackException e){
+                    throw new NumberFormatException("Введено невалидное значение!");
                 }
             } else {
                 while (!operator.isEmpty() && !get.equals("(") && weights(operator.peek()) >= weights(get)) {

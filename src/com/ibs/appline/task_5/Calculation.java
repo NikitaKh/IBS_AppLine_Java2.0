@@ -26,7 +26,11 @@ public class Calculation {
         for (int i = 0; i < postfixList.size(); i++) {
             Matcher digitMatch = PATTERN_DIGIT.matcher(postfixList.get(i));
             if (digitMatch.find()) {
-                calc.add(Double.parseDouble(postfixList.get(i)));
+                try {
+                    calc.add(Double.parseDouble(postfixList.get(i)));
+                } catch (NumberFormatException e){
+                    throw new NumberFormatException("Введено невалидное значение!");
+                }
             } else {
                 if (i == 1) {
                     calc.set(0, (calc.lastElement() * -1));
@@ -39,7 +43,7 @@ public class Calculation {
                     double tempCalc = makeCalculation(postfixList.get(i), opA, opB);
                     calc.add(tempCalc);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    throw new ArrayIndexOutOfBoundsException("НАДО ДОРАБОТАТЬ --");
+                    throw new NumberFormatException("Введено невалидное значение!");
                 }
 
             }
